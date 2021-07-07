@@ -9,16 +9,9 @@ request({ uri: weatherURL, json: true }, (error, response) => {
     } else if (response.body.error) {
         callback("Unable to find location!", undefined);
     } else {
-        callback(undefined, {
-            location: response.body.location.name,
-            descritpion: response.body.current.weather_descriptions[0],
-            temperature: response.body.current.temperature,
-            feelsLike: response.body.current.feelslike
-        })
-
-        // console.log(response.body.current.weather_descriptions[0] + ". It is currently " + response.body.current.temperature + 
-        // " celsius out. It feels like " + response.body.current.feelslike + 
-        // " celsius out.");
+        callback(undefined, "Weather summary: " + response.body.current.weather_descriptions[0] + " in " + response.body.location.name + ". It is currently " + response.body.current.temperature + 
+         " celsius out. It feels like " + response.body.current.feelslike + 
+         " celsius out.")
     }    
 })
 }
